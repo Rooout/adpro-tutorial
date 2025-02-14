@@ -24,6 +24,9 @@
       <td th:text="${product.productQuantity}"></td>
       <td class="flex space-x-2">
         <a th:href="@{/product/edit/{productId}(productId=${product.productId})}" class="btn btn-sm btn-primary">Edit</a>
+        <form th:action="@{/product/delete/{productId}(productId=${product.productId})}" method="post">
+          <button class="btn btn-sm btn-error" type="submit">Delete</button>
+        </form>
       </td>
     </tr>
     </tbody>
