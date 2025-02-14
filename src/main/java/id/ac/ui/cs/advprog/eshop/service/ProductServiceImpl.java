@@ -4,6 +4,8 @@ import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,4 +41,14 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.edit(product);
     }
 
+    @Override
+    public void delete(String id) {
+        productRepository.delete(id);
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") String id) {
+        productRepository.delete(id);
+        return "redirect:/product/list";
+    }
 }
